@@ -46,7 +46,61 @@
             color: var(--white);
             max-width: 100vw;
         }
-        
+        /* Navbar brand alignment */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+}
+
+/* Logo container size control */
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;   /* overall logo height in navbar */
+  width: auto;
+  
+}
+
+/* Remove extra card spacing inside navbar */
+.logo-card {
+  padding: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* SVG size control */
+.logo-container svg {
+  height: 45px;
+  width: auto;
+  display: block;
+}
+
+/* Hide extra logo text inside navbar */
+.logo-name,
+.logo-desc {
+  display: none;
+}
+
+/* Name text beside logo */
+.navbar-brand span {
+  font-weight: 600;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+/* Slightly smaller on small screens */
+@media (max-width: 576px) {
+  .logo-container svg {
+    height: 38px;
+  }
+  .navbar-brand span {
+    font-size: 16px;
+  }
+}
+
         .container {
             max-width: 100%;
             padding-left: 15px;
@@ -1056,7 +1110,38 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <div class="logo-placeholder">MR</div>
+                <div class="logo-placeholder"><div class="logo-card">
+                <div class="logo-container">
+                <div class="logo-card">
+                <div class="logo-container">
+               <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="400" height="400" fill="#6b21a8"/>
+                        
+                        <!-- RAUF Large -->
+                        <text x="200" y="180" font-family="Arial, sans-serif" font-size="80" font-weight="900" 
+                              fill="#ffffff" text-anchor="middle" letter-spacing="8">
+                            RAUF
+                        </text>
+                        
+                        <!-- Line Separator -->
+                        <line x1="100" y1="210" x2="300" y2="210" stroke="#ffffff" stroke-width="3"/>
+                        
+                        <!-- DEVELOPER -->
+                        <text x="200" y="260" font-family="Arial, sans-serif" font-size="32" font-weight="600" 
+                              fill="#000000" text-anchor="middle" letter-spacing="8">
+                            DEVELOPER
+                        </text>
+                    </svg>
+                </div>
+                <h3 class="logo-name">Text Only</h3>
+                <p class="logo-desc">Clean typography-focused design</p>
+            </div>
+
+                </div>
+                <h3 class="logo-name">Dot Pattern</h3>
+                <p class="logo-desc">Modern with decorative dots</p>
+            </div></div>
                 <span>Muhammad Rauf</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -1107,7 +1192,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 hero-image text-center">
-                    <img src="rauf-image.jpg" alt="Muhammad Rauf">
+                    <img src="image1.png.jpg" alt="Muhammad Rauf">
                 </div>
             </div>
         </div>
@@ -1442,7 +1527,7 @@
                         <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-stack-overflow"></i></a>
+                       
                     </div>
                 </div>
             </div>
