@@ -14,13 +14,11 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- GSAP Core + Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
   <style>
-    /* 
- * ULTRA-SMOOTH PERFORMANCE OPTIMIZED CSS
- * Replace the <style> section in your existing HTML with this
- * All animations optimized for butter-smooth performance on small screens
- */
-
 :root {
     --purple: #8B5CF6;
     --dark-purple: #6D28D9;
@@ -121,7 +119,7 @@ body {
     height: 100%;
     z-index: -1;
     background: linear-gradient(135deg, var(--black) 0%, var(--dark-purple) 50%, var(--black) 100%);
-    will-change: auto;
+    will-change: transform;
     backface-visibility: hidden;
     perspective: 1000px;
 }
@@ -135,7 +133,6 @@ body {
     top: -300px;
     right: -300px;
     opacity: 0.3;
-    animation: float 20s ease-in-out infinite;
     backface-visibility: hidden;
     transform: translateZ(0);
 }
@@ -149,22 +146,8 @@ body {
     bottom: -200px;
     left: -200px;
     opacity: 0.2;
-    animation: float 15s ease-in-out infinite reverse;
     backface-visibility: hidden;
     transform: translateZ(0);
-}
-
-/* BUTTER-SMOOTH FLOAT ANIMATION */
-@keyframes float {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-    }
-    33% {
-        transform: translate3d(50px, -50px, 0) rotate(120deg);
-    }
-    66% {
-        transform: translate3d(-30px, 30px, 0) rotate(240deg);
-    }
 }
 
 /* Particles - OPTIMIZED */
@@ -184,28 +167,10 @@ body {
     height: 4px;
     background: var(--purple);
     border-radius: 50%;
-    animation: particleFloat 10s linear infinite;
     opacity: 0.6;
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
-
-@keyframes particleFloat {
-    0%, 100% {
-        transform: translate3d(0, 0, 0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.6;
-    }
-    90% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translate3d(50px, -100vh, 0);
-        opacity: 0;
-    }
 }
 
 /* Scroll Progress Bar */
@@ -217,11 +182,10 @@ body {
     height: 5px;
     background: linear-gradient(90deg, var(--purple), var(--light-purple));
     z-index: 9999;
-    transition: width 0.1s linear;
     will-change: width;
 }
 
-/* Navbar - SMOOTH TRANSITIONS */
+/* Navbar */
 .navbar {
     background: rgba(15, 15, 15, 0.8) !important;
     backdrop-filter: blur(20px);
@@ -229,8 +193,7 @@ body {
     border-bottom: 1px solid rgba(139, 92, 246, 0.2);
     padding: 1.2rem 0;
     box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
+    will-change: padding, background, box-shadow;
     transform: translateZ(0);
     backface-visibility: hidden;
 }
@@ -264,17 +227,7 @@ body {
     color: white;
     font-size: 1.5rem;
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
-    animation: pulse 2s ease-in-out infinite;
     backface-visibility: hidden;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-    }
 }
 
 .navbar-nav .nav-link {
@@ -282,7 +235,6 @@ body {
     margin: 0 15px;
     font-weight: 600;
     position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -296,7 +248,6 @@ body {
     width: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--purple), var(--light-purple));
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
 }
 
@@ -333,14 +284,12 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-content .subtitle {
     font-size: 2rem;
     color: var(--light-purple);
     margin-bottom: 1.5rem;
-    animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
 }
 
@@ -348,7 +297,6 @@ body {
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
     opacity: 0.9;
-    animation: fadeInUp 1.4s cubic-bezier(0.4, 0, 0.2, 1);
     line-height: 1.8;
 }
 
@@ -358,30 +306,12 @@ body {
     height: 1.5rem;
     background: var(--purple);
     margin-left: 5px;
-    animation: blink 0.8s steps(2) infinite;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 50px, 0);
-    }
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-/* Hero Image - BUTTER SMOOTH */
+/* Hero Image */
 .hero-image {
     position: relative;
-    animation: float 6s ease-in-out infinite;
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
 }
@@ -393,15 +323,9 @@ body {
     border-radius: 30px;
     border: 3px solid rgba(139, 92, 246, 0.3);
     box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
+    will-change: transform, box-shadow;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
-
-.hero-image:hover img {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
-    transform: scale(1.05) translateZ(0);
 }
 
 /* Modern Glassmorphism Buttons */
@@ -412,12 +336,11 @@ body {
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 1px;
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
 }
@@ -438,18 +361,6 @@ body {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-primary-glass:hover::before {
-    left: 100%;
-}
-
-.btn-primary-glass:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-5px) translateZ(0);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-outline-glass {
@@ -457,13 +368,6 @@ body {
     color: var(--white);
     border: 2px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
-}
-
-.btn-outline-glass:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-5px) translateZ(0);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Glass Cards */
@@ -474,10 +378,9 @@ body {
     border: 1px solid rgba(139, 92, 246, 0.2);
     border-radius: 25px;
     padding: 2.5rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
 }
@@ -491,17 +394,6 @@ body {
     height: 200%;
     background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
     opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-card:hover::before {
-    opacity: 1;
-}
-
-.glass-card:hover {
-    transform: translateY(-15px) translateZ(0);
-    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
-    border-color: var(--purple);
 }
 
 /* Section Styles */
@@ -552,16 +444,9 @@ section {
     border-radius: 20px;
     margin-bottom: 2rem;
     border: 1px solid rgba(139, 92, 246, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
-
-.skill-card:hover {
-    transform: translateX(10px) translateZ(0);
-    border-color: var(--purple);
-    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
 }
 
 .skill-name {
@@ -583,7 +468,6 @@ section {
     height: 100%;
     background: linear-gradient(90deg, var(--purple), var(--light-purple));
     border-radius: 10px;
-    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0;
     position: relative;
 }
@@ -596,12 +480,6 @@ section {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shimmer 2s linear infinite;
-}
-
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
 }
 
 /* Tech Stack Tags */
@@ -621,17 +499,9 @@ section {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--light-purple);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
-
-.tech-tag:hover {
-    background: rgba(139, 92, 246, 0.2);
-    border-color: var(--purple);
-    transform: translateY(-3px) translateZ(0);
-    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
 }
 
 /* Projects Section */
@@ -641,10 +511,9 @@ section {
     border-radius: 25px;
     overflow: hidden;
     border: 1px solid rgba(139, 92, 246, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin-bottom: 2rem;
     position: relative;
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
 }
@@ -658,17 +527,6 @@ section {
     height: 100%;
     background: linear-gradient(135deg, transparent 0%, rgba(139, 92, 246, 0.1) 100%);
     opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-card:hover::before {
-    opacity: 1;
-}
-
-.project-card:hover {
-    transform: translateY(-15px) scale(1.02) translateZ(0);
-    box-shadow: 0 25px 80px rgba(139, 92, 246, 0.4);
-    border-color: var(--purple);
 }
 
 .project-img {
@@ -691,11 +549,6 @@ section {
     height: 100%;
     background: rgba(0,0,0,0.4);
     opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-card:hover .project-img::after {
-    opacity: 1;
 }
 
 .project-info {
@@ -745,16 +598,9 @@ section {
     border: 1px solid rgba(139, 92, 246, 0.2);
     position: relative;
     width: 45%;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
-
-.timeline-content:hover {
-    transform: scale(1.05) translateZ(0);
-    box-shadow: 0 15px 50px rgba(139, 92, 246, 0.3);
-    border-color: var(--purple);
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
@@ -798,10 +644,9 @@ section {
     border-left: 5px solid var(--purple);
     border: 1px solid rgba(139, 92, 246, 0.2);
     border-left: 5px solid var(--purple);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
 }
@@ -814,17 +659,6 @@ section {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
-    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.experience-card:hover::before {
-    left: 100%;
-}
-
-.experience-card:hover {
-    transform: translateX(15px) translateZ(0);
-    border-left-color: var(--light-purple);
-    box-shadow: 0 15px 50px rgba(139, 92, 246, 0.3);
 }
 
 /* Contact Section */
@@ -839,17 +673,10 @@ section {
     border-radius: 25px;
     border: 1px solid rgba(139, 92, 246, 0.3);
     margin-bottom: 2rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
-
-.contact-card:hover {
-    background: rgba(139, 92, 246, 0.12);
-    transform: translateY(-10px) translateZ(0);
-    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
 }
 
 .contact-card i {
@@ -874,17 +701,9 @@ section {
     margin: 0 10px;
     font-size: 1.5rem;
     border: 2px solid rgba(139, 92, 246, 0.3);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
+    will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
-}
-
-.social-links a:hover {
-    background: var(--purple);
-    border-color: var(--light-purple);
-    transform: translateY(-10px) rotate(360deg) translateZ(0);
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
 }
 
 /* Footer */
@@ -897,103 +716,21 @@ footer {
     text-align: center;
 }
 
-/* ULTRA SMOOTH Scroll Animations */
+/* Scroll Animations - Initial States Only */
 .fade-in {
     opacity: 0;
-    transform: translate3d(0, 50px, 0);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
-    backface-visibility: hidden;
-}
-
-.fade-in.active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
 }
 
 .slide-left {
     opacity: 0;
-    transform: translate3d(-100px, 0, 0);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
-    backface-visibility: hidden;
-}
-
-.slide-left.active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
 }
 
 .slide-right {
     opacity: 0;
-    transform: translate3d(100px, 0, 0);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
-    backface-visibility: hidden;
-}
-
-.slide-right.active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
 }
 
 .zoom-in {
     opacity: 0;
-    transform: scale(0.8) translateZ(0);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: auto;
-    backface-visibility: hidden;
-}
-
-.zoom-in.active {
-    opacity: 1;
-    transform: scale(1) translateZ(0);
-}
-
-/* 🚀 ULTRA-PERFORMANCE OPTIMIZATIONS FOR SMALL SCREENS 🚀 */
-@media (max-width: 768px) {
-    /* Simplify float animation for better performance */
-    @keyframes float {
-        0%, 100% {
-            transform: translate3d(0, 0, 0);
-        }
-        50% {
-            transform: translate3d(20px, -20px, 0);
-        }
-    }
-    
-    /* Disable particles on mobile for smooth performance */
-    .particles {
-        display: none;
-    }
-    
-    /* Disable background animation on mobile */
-    .animated-bg::before,
-    .animated-bg::after {
-        animation: none;
-    }
-    
-    /* Faster, smoother transitions */
-    .glass-card,
-    .skill-card,
-    .project-card,
-    .experience-card,
-    .contact-card,
-    .timeline-content {
-        transition: all 0.2s ease-out;
-    }
-    
-    /* Simplified hover effects for touch devices */
-    .glass-card:hover,
-    .skill-card:hover {
-        transform: none;
-        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
-    }
-    
-    .project-card:hover {
-        transform: translateY(-5px) translateZ(0);
-        box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
-    }
 }
 
 /* Responsive */
@@ -1178,38 +915,24 @@ footer {
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <div class="logo-placeholder"><div class="logo-card">
-                <div class="logo-container">
-                <div class="logo-card">
-                <div class="logo-container">
-               <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background -->
-                        <rect width="400" height="400" fill="#6b21a8"/>
-                        
-                        <!-- RAUF Large -->
-                        <text x="200" y="180" font-family="Arial, sans-serif" font-size="80" font-weight="900" 
-                              fill="#ffffff" text-anchor="middle" letter-spacing="8">
-                            RAUF
-                        </text>
-                        
-                        <!-- Line Separator -->
-                        <line x1="100" y1="210" x2="300" y2="210" stroke="#ffffff" stroke-width="3"/>
-                        
-                        <!-- DEVELOPER -->
-                        <text x="200" y="260" font-family="Arial, sans-serif" font-size="32" font-weight="600" 
-                              fill="#000000" text-anchor="middle" letter-spacing="8">
-                            DEVELOPER
-                        </text>
-                    </svg>
+                <div class="logo-placeholder">
+                    <div class="logo-card">
+                        <div class="logo-container">
+                            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="400" fill="#6b21a8"/>
+                                <text x="200" y="180" font-family="Arial, sans-serif" font-size="80" font-weight="900" 
+                                      fill="#ffffff" text-anchor="middle" letter-spacing="8">
+                                    RAUF
+                                </text>
+                                <line x1="100" y1="210" x2="300" y2="210" stroke="#ffffff" stroke-width="3"/>
+                                <text x="200" y="260" font-family="Arial, sans-serif" font-size="32" font-weight="600" 
+                                      fill="#000000" text-anchor="middle" letter-spacing="8">
+                                    DEVELOPER
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="logo-name">Text Only</h3>
-                <p class="logo-desc">Clean typography-focused design</p>
-            </div>
-
-                </div>
-                <h3 class="logo-name">Dot Pattern</h3>
-                <p class="logo-desc">Modern with decorative dots</p>
-            </div></div>
                 <span>Muhammad Rauf</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -1354,7 +1077,7 @@ footer {
                         </div>
                     </div>
                     <div class="skill-card">
-                        <div class="skill-name">jQuery</div>
+                        <div class="skill-name">GSAP</div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-progress="88"></div>
                         </div>
@@ -1541,9 +1264,7 @@ footer {
                         <p style="color: var(--purple); font-weight: 600; margin-bottom: 1rem;">Promoteez international | 2025</p>
                         <p style="margin-bottom: 1rem;">Built responsive web applications with Laravel backend and CSS,Js frontend. Collaborated with cross-functional teams and made real world projects.</p>
                         <ul style="color: rgba(255,255,255,0.8);">
-                            <li>• I specialize in crafting modern, responsive, and visually engaging user interfaces.
-
-</li>
+                            <li>• I specialize in crafting modern, responsive, and visually engaging user interfaces.</li>
                             <li>• I build dynamic web experiences using the latest tools and best UI/UX practices.</li>
                             <li>• My frontend work focuses on clean structure, smooth interactions, and pixel-perfect design.</li>
                             <li>• Alongside frontend, I develop efficient backend systems with strong logic and clean architecture.</li>
@@ -1595,7 +1316,6 @@ footer {
                         <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                       
                     </div>
                 </div>
             </div>
@@ -1613,109 +1333,640 @@ footer {
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JS -->
+    <!-- GSAP Powered JavaScript -->
     <script>
-        // Create Particles
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // ==============================================
+        // 1. PARTICLES - GSAP Animation
+        // ==============================================
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+            const particleCount = window.innerWidth < 768 ? 20 : 50; // Less particles on mobile
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.top = Math.random() * 100 + '%';
                 particlesContainer.appendChild(particle);
+                
+                // GSAP Animation for each particle
+                gsap.to(particle, {
+                    y: -window.innerHeight - 100,
+                    x: `+=${Math.random() * 100 - 50}`,
+                    opacity: 0,
+                    duration: Math.random() * 5 + 5,
+                    repeat: -1,
+                    ease: "none",
+                    delay: Math.random() * 5
+                });
+                
+                // Fade in/out effect
+                gsap.fromTo(particle, 
+                    { opacity: 0 },
+                    { 
+                        opacity: 0.6, 
+                        duration: 1,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "power1.inOut",
+                        delay: Math.random() * 5
+                    }
+                );
             }
         }
         
         createParticles();
         
-        // Scroll Progress Bar (Optimized with requestAnimationFrame)
-        let ticking = false;
+        // ==============================================
+        // 2. BACKGROUND FLOAT ANIMATION - GSAP
+        // ==============================================
+        gsap.to('.animated-bg::before', {
+            x: 50,
+            y: -50,
+            rotation: 120,
+            duration: 20,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
         
-        function updateScrollProgress() {
-            const scrollProgress = document.getElementById('scroll-progress');
-            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrolled = (window.scrollY / scrollableHeight) * 100;
-            scrollProgress.style.width = scrolled + '%';
-            ticking = false;
-        }
+        gsap.to('.animated-bg::after', {
+            x: -30,
+            y: 30,
+            rotation: -120,
+            duration: 15,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
         
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateScrollProgress);
-                ticking = true;
+        // ==============================================
+        // 3. SCROLL PROGRESS BAR - GSAP
+        // ==============================================
+        gsap.to('#scroll-progress', {
+            width: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: document.body,
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 0.3
             }
         });
         
-        // Navbar Scroll Effect (Optimized with requestAnimationFrame)
-        let navbarTicking = false;
+        // ==============================================
+        // 4. NAVBAR SCROLL EFFECT - GSAP
+        // ==============================================
+        const navbar = document.querySelector('.navbar');
         
-        function updateNavbar() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            navbarTicking = false;
-        }
-        
-        window.addEventListener('scroll', () => {
-            if (!navbarTicking) {
-                window.requestAnimationFrame(updateNavbar);
-                navbarTicking = true;
+        ScrollTrigger.create({
+            start: 'top -50',
+            end: 99999,
+            toggleClass: { targets: navbar, className: 'scrolled' },
+            onEnter: () => {
+                gsap.to(navbar, {
+                    padding: '0.8rem 0',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            },
+            onLeaveBack: () => {
+                gsap.to(navbar, {
+                    padding: '1.2rem 0',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
             }
         });
         
-        // Active Nav Link on Scroll (Optimized with requestAnimationFrame)
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        let navLinkTicking = false;
+        // ==============================================
+        // 5. LOGO PULSE ANIMATION - GSAP
+        // ==============================================
+        gsap.to('.logo-placeholder', {
+            boxShadow: '0 0 20px rgba(139, 92, 246, 0.4)',
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+        });
         
-        function updateActiveNavLink() {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
+        // ==============================================
+        // 6. HERO IMAGE FLOAT - GSAP
+        // ==============================================
+        gsap.to('.hero-image', {
+            y: -20,
+            duration: 3,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+        });
+        
+        // ==============================================
+        // 7. TYPING CURSOR BLINK - GSAP
+        // ==============================================
+        gsap.to('.typed-cursor', {
+            opacity: 0,
+            duration: 0.4,
+            repeat: -1,
+            yoyo: true,
+            ease: 'steps(1)'
+        });
+        
+        // ==============================================
+        // 8. SCROLL REVEAL ANIMATIONS - GSAP ScrollTrigger
+        // ==============================================
+        
+        // Fade In Elements
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.fromTo(element,
+                {
+                    opacity: 0,
+                    y: 50
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+        
+        // Slide Left Elements
+        gsap.utils.toArray('.slide-left').forEach(element => {
+            gsap.fromTo(element,
+                {
+                    opacity: 0,
+                    x: -100
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+        
+        // Slide Right Elements
+        gsap.utils.toArray('.slide-right').forEach(element => {
+            gsap.fromTo(element,
+                {
+                    opacity: 0,
+                    x: 100
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+        
+        // Zoom In Elements
+        gsap.utils.toArray('.zoom-in').forEach(element => {
+            gsap.fromTo(element,
+                {
+                    opacity: 0,
+                    scale: 0.8
+                },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: 'back.out(1.7)',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+        
+        // ==============================================
+        // 9. SKILL BARS ANIMATION - GSAP
+        // ==============================================
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        skillBars.forEach(bar => {
+            const progress = bar.getAttribute('data-progress');
+            
+            gsap.fromTo(bar,
+                { width: '0%' },
+                {
+                    width: progress + '%',
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: bar,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+            
+            // Shimmer effect
+            gsap.to(bar.querySelector('::after'), {
+                x: '200%',
+                duration: 2,
+                repeat: -1,
+                ease: 'none',
+                delay: 1
+            });
+        });
+        
+        // ==============================================
+        // 10. HOVER ANIMATIONS - GSAP
+        // ==============================================
+        
+        // Glass Cards Hover
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -15,
+                    boxShadow: '0 20px 60px rgba(139, 92, 246, 0.3)',
+                    borderColor: 'var(--purple)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                gsap.to(card.querySelector('::before'), {
+                    opacity: 1,
+                    duration: 0.3
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    boxShadow: 'none',
+                    borderColor: 'rgba(139, 92, 246, 0.2)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                gsap.to(card.querySelector('::before'), {
+                    opacity: 0,
+                    duration: 0.3
+                });
+            });
+        });
+        
+        // Skill Cards Hover
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    x: 10,
+                    borderColor: 'var(--purple)',
+                    boxShadow: '0 10px 40px rgba(139, 92, 246, 0.3)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    x: 0,
+                    borderColor: 'rgba(139, 92, 246, 0.2)',
+                    boxShadow: 'none',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Project Cards Hover
+        document.querySelectorAll('.project-card').forEach(card => {
+            const overlay = card.querySelector('.project-img::after');
+            
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -15,
+                    scale: 1.02,
+                    boxShadow: '0 25px 80px rgba(139, 92, 246, 0.4)',
+                    borderColor: 'var(--purple)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                gsap.to(card.querySelector('::before'), {
+                    opacity: 1,
+                    duration: 0.3
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    scale: 1,
+                    boxShadow: 'none',
+                    borderColor: 'rgba(139, 92, 246, 0.2)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                gsap.to(card.querySelector('::before'), {
+                    opacity: 0,
+                    duration: 0.3
+                });
+            });
+        });
+        
+        // Timeline Content Hover
+        document.querySelectorAll('.timeline-content').forEach(content => {
+            content.addEventListener('mouseenter', () => {
+                gsap.to(content, {
+                    scale: 1.05,
+                    boxShadow: '0 15px 50px rgba(139, 92, 246, 0.3)',
+                    borderColor: 'var(--purple)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            content.addEventListener('mouseleave', () => {
+                gsap.to(content, {
+                    scale: 1,
+                    boxShadow: 'none',
+                    borderColor: 'rgba(139, 92, 246, 0.2)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Experience Card Hover
+        document.querySelectorAll('.experience-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    x: 15,
+                    borderLeftColor: 'var(--light-purple)',
+                    boxShadow: '0 15px 50px rgba(139, 92, 246, 0.3)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                gsap.fromTo(card.querySelector('::before'),
+                    { left: '-100%' },
+                    { left: '100%', duration: 0.5, ease: 'power2.inOut' }
+                );
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    x: 0,
+                    borderLeftColor: 'var(--purple)',
+                    boxShadow: 'none',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Contact Cards Hover
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -10,
+                    background: 'rgba(139, 92, 246, 0.12)',
+                    boxShadow: '0 20px 60px rgba(139, 92, 246, 0.3)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    background: 'rgba(139, 92, 246, 0.08)',
+                    boxShadow: 'none',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Tech Tags Hover
+        document.querySelectorAll('.tech-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                gsap.to(tag, {
+                    y: -3,
+                    background: 'rgba(139, 92, 246, 0.2)',
+                    borderColor: 'var(--purple)',
+                    boxShadow: '0 5px 20px rgba(139, 92, 246, 0.3)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            tag.addEventListener('mouseleave', () => {
+                gsap.to(tag, {
+                    y: 0,
+                    background: 'rgba(139, 92, 246, 0.1)',
+                    borderColor: 'rgba(139, 92, 246, 0.3)',
+                    boxShadow: 'none',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Social Links Hover
+        document.querySelectorAll('.social-links a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.to(link, {
+                    y: -10,
+                    rotation: 360,
+                    background: 'var(--purple)',
+                    borderColor: 'var(--light-purple)',
+                    boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)',
+                    duration: 0.5,
+                    ease: 'back.out(1.7)'
+                });
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, {
+                    y: 0,
+                    rotation: 0,
+                    background: 'rgba(139, 92, 246, 0.1)',
+                    borderColor: 'rgba(139, 92, 246, 0.3)',
+                    boxShadow: 'none',
+                    duration: 0.5,
+                    ease: 'back.out(1.7)'
+                });
+            });
+        });
+        
+        // Buttons Hover
+        document.querySelectorAll('.modern-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                gsap.to(btn, {
+                    y: -5,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                if (btn.classList.contains('btn-primary-glass')) {
+                    gsap.to(btn, {
+                        background: 'rgba(255, 255, 255, 0.25)',
+                        borderColor: 'rgba(255, 255, 255, 0.5)',
+                        boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
+                        duration: 0.3
+                    });
+                    
+                    gsap.fromTo(btn.querySelector('::before'),
+                        { left: '-100%' },
+                        { left: '100%', duration: 0.5, ease: 'power2.inOut' }
+                    );
+                } else {
+                    gsap.to(btn, {
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        borderColor: 'rgba(255, 255, 255, 0.6)',
+                        boxShadow: '0 15px 40px rgba(0, 0, 0, 0.15)',
+                        duration: 0.3
+                    });
                 }
             });
             
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-            navLinkTicking = false;
-        }
-        
-        window.addEventListener('scroll', () => {
-            if (!navLinkTicking) {
-                window.requestAnimationFrame(updateActiveNavLink);
-                navLinkTicking = true;
-            }
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, {
+                    y: 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                if (btn.classList.contains('btn-primary-glass')) {
+                    gsap.to(btn, {
+                        background: 'rgba(255, 255, 255, 0.15)',
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                        duration: 0.3
+                    });
+                } else {
+                    gsap.to(btn, {
+                        background: 'transparent',
+                        borderColor: 'rgba(255, 255, 255, 0.4)',
+                        boxShadow: 'none',
+                        duration: 0.3
                     });
                 }
             });
         });
         
-        // Typing Effect
+        // Hero Image Hover
+        document.querySelector('.hero-image img')?.addEventListener('mouseenter', function() {
+            gsap.to(this, {
+                scale: 1.05,
+                boxShadow: '0 0 40px rgba(139, 92, 246, 0.3)',
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+        
+        document.querySelector('.hero-image img')?.addEventListener('mouseleave', function() {
+            gsap.to(this, {
+                scale: 1,
+                boxShadow: '0 0 30px rgba(139, 92, 246, 0.2)',
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+        
+        // Nav Link Hover (for underline effect)
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            const underline = link.querySelector('::before');
+            
+            link.addEventListener('mouseenter', () => {
+                gsap.to(link, {
+                    color: 'var(--light-purple)',
+                    duration: 0.3
+                });
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                if (!link.classList.contains('active')) {
+                    gsap.to(link, {
+                        color: 'var(--white)',
+                        duration: 0.3
+                    });
+                }
+            });
+        });
+        
+        // ==============================================
+        // 11. ACTIVE NAV LINK ON SCROLL - GSAP
+        // ==============================================
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        sections.forEach(section => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 200px',
+                end: 'bottom 200px',
+                onEnter: () => updateActiveLink(section.id),
+                onEnterBack: () => updateActiveLink(section.id)
+            });
+        });
+        
+        function updateActiveLink(id) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // ==============================================
+        // 12. SMOOTH SCROLLING - GSAP
+        // ==============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 80
+                        },
+                        ease: 'power3.inOut'
+                    });
+                }
+            });
+        });
+        
+        // ==============================================
+        // 13. TYPING EFFECT (Vanilla JS with GSAP Integration)
+        // ==============================================
         const typedTextSpan = document.getElementById('typed-text');
         const textArray = ['Full Stack Developer', 'Frontend Specialist', 'Laravel Expert', 'UI/UX Enthusiast', 'Problem Solver'];
         const typingDelay = 100;
@@ -1750,60 +2001,57 @@ footer {
             setTimeout(type, newTextDelay + 250);
         });
         
-        // Scroll Animations (Optimized with Intersection Observer)
-        const fadeElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right, .zoom-in');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -150px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                } else {
-                    entry.target.classList.remove('active');
-                }
-            });
-        }, observerOptions);
-        
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-        
-        // Skill Bar Animation (Optimized with Intersection Observer)
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const skillsSection = document.getElementById('skills');
-        
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    skillBars.forEach(bar => {
-                        const progress = bar.getAttribute('data-progress');
-                        bar.style.width = progress + '%';
-                    });
-                } else {
-                    skillBars.forEach(bar => {
-                        bar.style.width = '0';
-                    });
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        if (skillsSection) {
-            skillsObserver.observe(skillsSection);
-        }
-        
-        // Mobile Menu Close on Link Click
+        // ==============================================
+        // 14. MOBILE MENU CLOSE ON LINK CLICK
+        // ==============================================
         const navbarCollapse = document.querySelector('.navbar-collapse');
+        
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (navbarCollapse.classList.contains('show')) {
-                    navbarCollapse.classList.remove('show');
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                        toggle: false
+                    });
+                    bsCollapse.hide();
                 }
             });
         });
+        
+        // ==============================================
+        // 15. HERO SECTION ENTRANCE ANIMATION
+        // ==============================================
+        gsap.timeline()
+            .from('.hero-content h1', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out'
+            })
+            .from('.hero-content .subtitle', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=0.6')
+            .from('.hero-content p', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=0.6')
+            .from('.hero-content .modern-btn', {
+                opacity: 0,
+                y: 30,
+                stagger: 0.2,
+                duration: 0.8,
+                ease: 'back.out(1.7)'
+            }, '-=0.4')
+            .from('.hero-image img', {
+                opacity: 0,
+                scale: 0.8,
+                duration: 1,
+                ease: 'back.out(1.7)'
+            }, '-=1');
     </script>
 </body>
 </html>
