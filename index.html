@@ -7,7 +7,7 @@
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
@@ -17,6 +17,7 @@
     <!-- GSAP Core + Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     
   <style>
 :root {
@@ -51,6 +52,10 @@ body {
     max-width: 100vw;
 }
 
+.font-ui {
+  font-family: 'Poppins', sans-serif;
+font-size: larger;
+}
 /* Loading Screen Styles */
 .loading-screen {
     position: fixed;
@@ -283,6 +288,7 @@ body.loading {
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .navbar-nav .nav-link::before {
@@ -294,11 +300,13 @@ body.loading {
     height: 3px;
     background: linear-gradient(90deg, var(--purple), var(--light-purple));
     transform: translateX(-50%);
+    transition: width 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: var(--light-purple) !important;
+    transform: translateY(-2px);
 }
 
 .navbar-nav .nav-link:hover::before,
@@ -336,6 +344,7 @@ body.loading {
     color: var(--light-purple);
     margin-bottom: 1.5rem;
     font-weight: 600;
+    min-height: 60px;
 }
 
 .hero-content p {
@@ -348,9 +357,14 @@ body.loading {
 .typed-cursor {
     display: inline-block;
     width: 3px;
-    height: 1.5rem;
     background: var(--purple);
     margin-left: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 /* Hero Image */
@@ -958,7 +972,7 @@ footer {
     
     <!-- Loading Screen -->
     <div class="loading-screen">
-        <h1 class="loading-text">Muhammad Rauf</h1>
+        <h1 class="loading-text">Muhammad <span style="color: #8B5CF6;">Rauf</span></h1>
     </div>
 
     <!-- Main Content -->
@@ -973,24 +987,13 @@ footer {
     <div id="scroll-progress"></div>
     
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top font-ui">
         <div class="container">
             <a class="navbar-brand" href="#home">
                 <div class="logo-placeholder">
                     <div class="logo-card">
                         <div class="logo-container">
-                            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="400" height="400" fill="#6b21a8"/>
-                                <text x="200" y="180" font-family="Arial, sans-serif" font-size="80" font-weight="900" 
-                                      fill="#ffffff" text-anchor="middle" letter-spacing="8">
-                                    RAUF
-                                </text>
-                                <line x1="100" y1="210" x2="300" y2="210" stroke="#ffffff" stroke-width="3"/>
-                                <text x="200" y="260" font-family="Arial, sans-serif" font-size="32" font-weight="600" 
-                                      fill="#000000" text-anchor="middle" letter-spacing="8">
-                                    DEVELOPER
-                                </text>
-                            </svg>
+                            <span class="fs-5 fs-lg-4">R</span>
                         </div>
                     </div>
                 </div>
@@ -1033,10 +1036,7 @@ footer {
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
                     <h1 class="hero-glitch">Muhammad Rauf</h1>
-                    <p class="subtitle">
-                        <span id="typed-text"></span>
-                        <span class="typed-cursor"></span>
-                    </p>
+                    
                     <p>A Frontend development specialist & Crafting powerful full-stack applications with cutting-edge frontend technologies and robust PHP Laravel backends. Transforming ideas into scalable, elegant digital solutions.</p>
                     <div class="mt-4">
                         <button class="modern-btn btn-primary-glass me-3" onclick="location.href='#projects'">Explore Projects</button>
@@ -1102,7 +1102,7 @@ footer {
                     <div class="skill-card">
                         <div class="skill-name">HTML5</div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-progress="98"></div>
+                            <div class="skill-progress" data-progress="99"></div>
                         </div>
                     </div>
                     <div class="skill-card">
@@ -1114,13 +1114,13 @@ footer {
                     <div class="skill-card">
                         <div class="skill-name">CSS3</div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-progress="90"></div>
+                            <div class="skill-progress" data-progress="99"></div>
                         </div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-name">Github</div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-progress="85"></div>
+                            <div class="skill-progress" data-progress="97"></div>
                         </div>
                     </div>
                 </div>
@@ -1128,7 +1128,7 @@ footer {
                     <div class="skill-card">
                         <div class="skill-name">Bootstrap CSS</div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-progress="95"></div>
+                            <div class="skill-progress" data-progress="98"></div>
                         </div>
                     </div>
                     <div class="skill-card">
@@ -1140,7 +1140,7 @@ footer {
                     <div class="skill-card">
                         <div class="skill-name">GSAP</div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-progress="88"></div>
+                            <div class="skill-progress" data-progress="90"></div>
                         </div>
                     </div>
                     <div class="skill-card">
@@ -1401,7 +1401,7 @@ footer {
             // Animate loading text
             tl.to('.loading-text', {
                 opacity: 1,
-                duration: 0.8,
+                duration: 1,
                 ease: 'power2.out'
             })
             .to('.loading-text', {
@@ -1436,15 +1436,116 @@ footer {
     
     <!-- GSAP Powered JavaScript -->
     <script>
+        
         // Register ScrollTrigger plugin
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         
         // ==============================================
-        // 1. PARTICLES - GSAP Animation
+        // ✅ CHANGE 1: TYPING ANIMATION - Hero Section
+        // ==============================================
+        const typedTextSpan = document.getElementById('typed-text');
+        const textArray = ['Full Stack Developer', 'Frontend Specialist', 'Laravel Expert', 'UI/UX Enthusiast', 'Problem Solver'];
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newTextDelay = 2000;
+        let textArrayIndex = 0;
+        let charIndex = 0;
+        
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newTextDelay);
+            }
+        }
+        
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                textArrayIndex++;
+                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                setTimeout(type, typingDelay + 1100);
+            }
+        }
+        
+        // Start typing animation after page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(type, newTextDelay + 250);
+        });
+        
+        // ==============================================
+        // ✅ CHANGE 2: SMOOTH SCROLL NAVIGATION - GSAP
+        // ==============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1.2,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 80
+                        },
+                        ease: 'power3.inOut'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                            toggle: false
+                        });
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+        
+        // ==============================================
+        // ✅ CHANGE 3: IMPROVED NAV HOVER ANIMATIONS
+        // ==============================================
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                gsap.to(this, {
+                    color: 'var(--light-purple)',
+                    scale: 1.1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    gsap.to(this, {
+                        color: 'var(--white)',
+                        scale: 1,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                } else {
+                    gsap.to(this, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                }
+            });
+        });
+        
+        // ==============================================
+        // PARTICLES - GSAP Animation
         // ==============================================
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = window.innerWidth < 768 ? 20 : 50; // Less particles on mobile
+            const particleCount = window.innerWidth < 768 ? 20 : 50;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -1453,7 +1554,6 @@ footer {
                 particle.style.top = Math.random() * 100 + '%';
                 particlesContainer.appendChild(particle);
                 
-                // GSAP Animation for each particle
                 gsap.to(particle, {
                     y: -window.innerHeight - 100,
                     x: `+=${Math.random() * 100 - 50}`,
@@ -1464,7 +1564,6 @@ footer {
                     delay: Math.random() * 5
                 });
                 
-                // Fade in/out effect
                 gsap.fromTo(particle, 
                     { opacity: 0 },
                     { 
@@ -1482,7 +1581,7 @@ footer {
         createParticles();
         
         // ==============================================
-        // 2. BACKGROUND FLOAT ANIMATION - GSAP
+        // BACKGROUND FLOAT ANIMATION - GSAP
         // ==============================================
         gsap.to('.animated-bg::before', {
             x: 50,
@@ -1505,7 +1604,7 @@ footer {
         });
         
         // ==============================================
-        // 3. SCROLL PROGRESS BAR - GSAP
+        // SCROLL PROGRESS BAR - GSAP
         // ==============================================
         gsap.to('#scroll-progress', {
             width: '100%',
@@ -1519,7 +1618,7 @@ footer {
         });
         
         // ==============================================
-        // 4. NAVBAR SCROLL EFFECT - GSAP
+        // NAVBAR SCROLL EFFECT - GSAP
         // ==============================================
         const navbar = document.querySelector('.navbar');
         
@@ -1544,7 +1643,7 @@ footer {
         });
         
         // ==============================================
-        // 5. LOGO PULSE ANIMATION - GSAP
+        // LOGO PULSE ANIMATION - GSAP
         // ==============================================
         gsap.to('.logo-placeholder', {
             boxShadow: '0 0 20px rgba(139, 92, 246, 0.4)',
@@ -1555,7 +1654,7 @@ footer {
         });
         
         // ==============================================
-        // 6. HERO IMAGE FLOAT - GSAP
+        // HERO IMAGE FLOAT - GSAP
         // ==============================================
         gsap.to('.hero-image', {
             y: -20,
@@ -1566,18 +1665,7 @@ footer {
         });
         
         // ==============================================
-        // 7. TYPING CURSOR BLINK - GSAP
-        // ==============================================
-        gsap.to('.typed-cursor', {
-            opacity: 0,
-            duration: 0.4,
-            repeat: -1,
-            yoyo: true,
-            ease: 'steps(1)'
-        });
-        
-        // ==============================================
-        // 8. SCROLL REVEAL ANIMATIONS - GSAP ScrollTrigger
+        // SCROLL REVEAL ANIMATIONS - GSAP ScrollTrigger
         // ==============================================
         
         // Fade In Elements
@@ -1669,7 +1757,7 @@ footer {
         });
         
         // ==============================================
-        // 9. SKILL BARS ANIMATION - GSAP
+        // SKILL BARS ANIMATION - GSAP
         // ==============================================
         const skillBars = document.querySelectorAll('.skill-progress');
         
@@ -1689,19 +1777,10 @@ footer {
                     }
                 }
             );
-            
-            // Shimmer effect
-            gsap.to(bar.querySelector('::after'), {
-                x: '200%',
-                duration: 2,
-                repeat: -1,
-                ease: 'none',
-                delay: 1
-            });
         });
         
         // ==============================================
-        // 10. HOVER ANIMATIONS - GSAP
+        // HOVER ANIMATIONS - GSAP
         // ==============================================
         
         // Glass Cards Hover
@@ -1714,11 +1793,6 @@ footer {
                     duration: 0.3,
                     ease: 'power2.out'
                 });
-                
-                gsap.to(card.querySelector('::before'), {
-                    opacity: 1,
-                    duration: 0.3
-                });
             });
             
             card.addEventListener('mouseleave', () => {
@@ -1728,11 +1802,6 @@ footer {
                     borderColor: 'rgba(139, 92, 246, 0.2)',
                     duration: 0.3,
                     ease: 'power2.out'
-                });
-                
-                gsap.to(card.querySelector('::before'), {
-                    opacity: 0,
-                    duration: 0.3
                 });
             });
         });
@@ -1762,8 +1831,6 @@ footer {
         
         // Project Cards Hover
         document.querySelectorAll('.project-card').forEach(card => {
-            const overlay = card.querySelector('.project-img::after');
-            
             card.addEventListener('mouseenter', () => {
                 gsap.to(card, {
                     y: -15,
@@ -1772,11 +1839,6 @@ footer {
                     borderColor: 'var(--purple)',
                     duration: 0.3,
                     ease: 'power2.out'
-                });
-                
-                gsap.to(card.querySelector('::before'), {
-                    opacity: 1,
-                    duration: 0.3
                 });
             });
             
@@ -1788,11 +1850,6 @@ footer {
                     borderColor: 'rgba(139, 92, 246, 0.2)',
                     duration: 0.3,
                     ease: 'power2.out'
-                });
-                
-                gsap.to(card.querySelector('::before'), {
-                    opacity: 0,
-                    duration: 0.3
                 });
             });
         });
@@ -1830,11 +1887,6 @@ footer {
                     duration: 0.3,
                     ease: 'power2.out'
                 });
-                
-                gsap.fromTo(card.querySelector('::before'),
-                    { left: '-100%' },
-                    { left: '100%', duration: 0.5, ease: 'power2.inOut' }
-                );
             });
             
             card.addEventListener('mouseleave', () => {
@@ -1939,11 +1991,6 @@ footer {
                         boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
                         duration: 0.3
                     });
-                    
-                    gsap.fromTo(btn.querySelector('::before'),
-                        { left: '-100%' },
-                        { left: '100%', duration: 0.5, ease: 'power2.inOut' }
-                    );
                 } else {
                     gsap.to(btn, {
                         background: 'rgba(255, 255, 255, 0.1)',
@@ -1998,29 +2045,8 @@ footer {
             });
         });
         
-        // Nav Link Hover (for underline effect)
-        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-            const underline = link.querySelector('::before');
-            
-            link.addEventListener('mouseenter', () => {
-                gsap.to(link, {
-                    color: 'var(--light-purple)',
-                    duration: 0.3
-                });
-            });
-            
-            link.addEventListener('mouseleave', () => {
-                if (!link.classList.contains('active')) {
-                    gsap.to(link, {
-                        color: 'var(--white)',
-                        duration: 0.3
-                    });
-                }
-            });
-        });
-        
         // ==============================================
-        // 11. ACTIVE NAV LINK ON SCROLL - GSAP
+        // ACTIVE NAV LINK ON SCROLL - GSAP
         // ==============================================
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -2045,81 +2071,7 @@ footer {
         }
         
         // ==============================================
-        // 12. SMOOTH SCROLLING - GSAP
-        // ==============================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    gsap.to(window, {
-                        duration: 1,
-                        scrollTo: {
-                            y: target,
-                            offsetY: 80
-                        },
-                        ease: 'power3.inOut'
-                    });
-                }
-            });
-        });
-        
-        // ==============================================
-        // 13. TYPING EFFECT (Vanilla JS with GSAP Integration)
-        // ==============================================
-        const typedTextSpan = document.getElementById('typed-text');
-        const textArray = ['Full Stack Developer', 'Frontend Specialist', 'Laravel Expert', 'UI/UX Enthusiast', 'Problem Solver'];
-        const typingDelay = 100;
-        const erasingDelay = 50;
-        const newTextDelay = 2000;
-        let textArrayIndex = 0;
-        let charIndex = 0;
-        
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } else {
-                setTimeout(erase, newTextDelay);
-            }
-        }
-        
-        function erase() {
-            if (charIndex > 0) {
-                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } else {
-                textArrayIndex++;
-                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay + 1100);
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(type, newTextDelay + 250);
-        });
-        
-        // ==============================================
-        // 14. MOBILE MENU CLOSE ON LINK CLICK
-        // ==============================================
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                        toggle: false
-                    });
-                    bsCollapse.hide();
-                }
-            });
-        });
-        
-        // ==============================================
-        // 15. HERO SECTION ENTRANCE ANIMATION
+        // HERO SECTION ENTRANCE ANIMATION
         // ==============================================
         gsap.timeline()
             .from('.hero-content h1', {
